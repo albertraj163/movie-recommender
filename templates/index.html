@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CineMatch — Movie Recommender</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="bg-grid"></div>
+
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-icon">🎬</div>
+        <div>
+          <h1>CineMatch</h1>
+          <p>Collaborative Filtering Engine</p>
+        </div>
+      </div>
+      <div class="stats-bar" id="statsBar">
+        <div class="stat"><span id="statUsers">—</span><label>Users</label></div>
+        <div class="stat"><span id="statMovies">—</span><label>Movies</label></div>
+        <div class="stat"><span id="statRatings">—</span><label>Ratings</label></div>
+        <div class="stat"><span id="statAvg">—</span><label>Avg Rating</label></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container main">
+    <section class="hero card">
+      <div class="hero-content">
+        <span class="badge">User-Based Collaborative Filtering</span>
+        <h2>Discover movies you'll love</h2>
+        <p>
+          Select a user profile to see their watch history and get personalized
+          recommendations powered by cosine similarity between users.
+        </p>
+      </div>
+      <div class="hero-controls">
+        <label for="userSelect">Choose User</label>
+        <div class="control-row">
+          <select id="userSelect"></select>
+          <button id="recommendBtn" class="btn-primary">
+            Get Recommendations
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div class="panels">
+      <section class="card panel">
+        <div class="panel-header">
+          <h3>Watch History</h3>
+          <span class="panel-sub" id="historySub">Select a user</span>
+        </div>
+        <div id="historyList" class="movie-list empty-state">
+          <p>Choose a user to view their rated movies.</p>
+        </div>
+      </section>
+
+      <section class="card panel">
+        <div class="panel-header">
+          <h3>Recommended For You</h3>
+          <span class="panel-sub" id="recSub">Top picks</span>
+        </div>
+        <div id="recList" class="movie-list empty-state">
+          <p>Click "Get Recommendations" to see personalized picks.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Movie Recommendation System · Cosine Similarity · Flask + scikit-learn</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
